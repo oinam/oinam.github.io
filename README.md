@@ -1,2 +1,1 @@
-# oinam.github.io
-oinam.com
+# Oinam
