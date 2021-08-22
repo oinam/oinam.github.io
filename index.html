@@ -1,79 +1,59 @@
 <!doctype html>
-<html lang="en">
-<head>
-<title>Oinam</title>
+<html>
 
+<head>
 <meta charset="utf-8">
+<title>oinam.github.io</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style type="text/css">
-  html {
-    margin: 1rem auto;
-    width: 600px;
-    max-width: 96%;
+  body {
+    margin: 2em auto;
+    width: 90%;
+    max-width: 640px;
 
-    font-size: 16px;
+    font-family: sans-serif;
+    font-size: 1.2em;
+  }
+  
+  ol, ul {
+    margin: 1em 0;
   }
 
-  body {
-    font-family: sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.6;
+  li {
+    padding: 0.25em 0;
+  }
+
+  a, a:visited {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  a:hover, a:active {
+    color: black;
+    border-bottom: 1px solid black;
   }
 </style>
-
 </head>
+
 <body>
-
-<header>
-  <h1 class="title">Oinam</h1>
-</header>
-
-<hr>
-
-<main>
-  <h2>Oinam</h2>
-  <p>
-    <ul>
-      <li><a target="_onm" href="https://oinam.fyi">Digital Garden</li>
-      <li><a target="_onm" href="https://www.icloud.com/sharedalbum/#B0VGI9HKKGSBQSW">Pictures</a></li>
-      <li><a target="_onm" href="https://stories.oinam.com">Stories</a></li>
-      <li><a target="_onm" href="https://brajeshwar.com">brajeshwar.com</a></li>
-    </ul>
-  </p>
-
-  <h2>Work</h2>
-  <p>
-    <ul>
-      <li><a target="_onm" href="https://ten.pink/">10.Pink</a></li>
-      <li><a target="_onm" href="https://alarisprime.com/">Alaris Prime</a></li>
-      <li><a target="_onm" href="https://valinor.earth/">Valinor Earth</a></li>
-    </ul>
-  </p>
-
-  <h2>Fun, Free, and/or Open Source</h2>
-  <p>
-    <ul>
-      <li><a target="_onm" href="https://github.com/oinam">Oinam’s Open Source</a></li>
-      <li><a target="_onm" href="https://excalidraw.oinam.com">ExcaliDraw</a> (<a target="_onm" href="https://github.com/oinam/excalidraw">source</a>)</li>
-      <li><a target="_onm" href="https://paint.oinam.com/">Microsoft Paint Online</a> (<a target="_onm" href="https://github.com/oinam/ms-xp-paint">source</a>)</li>
-      <li><a target="_onm" href="https://wireflow.oinam.com">WireFlow</a> (<a target="_onm" href="https://github.com/oinam/wireflow">source</a>)</li>
-    </ul>
-  </p>
-</main>
-
-<hr>
-
-<footer>
-  <p>
-    <small>
-      <a target="_onm" href="https://twitter.com/oinam">Twitter</a>
-      • <a target="_onm" href="https://www.instagram.com/oinam/">Instagram</a>
-      • <a target="_onm" href="https://www.linkedin.com/company/oinam/">LinkedIn</a>
-      • <a target="_onm" href="mailto:hi@oinam.com">Email</a>
-    </small>
-  </p>
-</footer>
-
+  <ol class="repos"></ol>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+var request = new XMLHttpRequest();
+request.open('GET', 'https://api.github.com/users/oinam/repos?per_page=100', true)
+request.onload = function() {
+  var data = JSON.parse(this.response);
+  console.log(data);
+  var statusHTML = '';
+  $.each(data, function(i, status) {
+    statusHTML +=
+      '<li><a href="' + status.html_url + '" target="_blank">' + status.name + '</a></li>';
+  });
+  $('.repos').html(statusHTML);
+}
+request.send();
+</script>
 </html>
