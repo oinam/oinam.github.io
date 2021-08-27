@@ -1,44 +1,10 @@
-<!doctype html>
-<html>
+---
+layout: default
+---
 
-<head>
-<meta charset="utf-8">
-<title>oinam.github.io</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style type="text/css">
-  body {
-    margin: 2em auto;
-    width: 90%;
-    max-width: 640px;
-
-    font-family: sans-serif;
-    font-size: 1.2em;
-  }
-  
-  ol, ul {
-    margin: 1em 0;
-  }
-
-  li {
-    padding: 0.25em 0;
-  }
-
-  a, a:visited {
-    color: blue;
-    text-decoration: none;
-  }
-  
-  a:hover, a:active {
-    color: black;
-    border-bottom: 1px solid black;
-  }
-</style>
-</head>
-
-<body>
+<div class="items-list">
   <ol class="repos"></ol>
-</body>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -56,4 +22,3 @@ request.onload = function() {
 }
 request.send();
 </script>
-</html>
